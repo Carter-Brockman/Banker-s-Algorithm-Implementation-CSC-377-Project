@@ -3,6 +3,7 @@
 
 int main()
 {
+	std::cout << "==============Banker's Algorithm==============" << std::endl;
 	//Variable declaration and assignment -- Banker's Algorithm
 	int processes; int resources;
 
@@ -10,7 +11,7 @@ int main()
 	std::cout << "Input number of resources : "; std::cin >> resources; std::cout << std::endl;
 
 	//Variable declaration and assignment -- Safety Algorithm
-	int count = 0; bool safeFound = false;
+	int count = 0; bool safeFound = false; int safetyLoopCount = 0;
 
 	//The following are matricies that are allocated at runtime to allow variable testing:
 	//For Banker's Algorithm
@@ -100,6 +101,7 @@ int main()
 			std::cout << "Unsafe state detected! Chance of deadlock!" << std::endl;
 			return 0;
 		}
+		safetyLoopCount++;
 	}
 
 	//Output the processes in the order they are ran to avoid a deadlock
@@ -111,6 +113,7 @@ int main()
 
 
 	std::cout << "Process " << safeSequence.back() << std::endl;
+	std::cout << "Number of Safety Algorithm iterations: " << safetyLoopCount << std::endl;
 
 	return 0;
 }
